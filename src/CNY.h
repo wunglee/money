@@ -4,12 +4,10 @@
 
 #ifndef MONEY_TDD_CNY_H
 #define MONEY_TDD_CNY_H
-
-class CNY {
-const float amount;
+#include "Money.h"
+class CNY : public Money{
 public:
     CNY(const float amount);
-    bool operator==(const CNY &cny) const;
 
     CNY plus(CNY cny);
 

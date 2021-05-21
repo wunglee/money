@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 #include "../src/CNY.h"
 #include "../src/Exceptions.h"
+#include "../src/USD.h"
 /**
  * 任务列表：
  * 创建CNY类型
@@ -58,4 +59,9 @@ TEST(单一货币,除法运算乘数为负数或零){
     CNY a(5);
     ASSERT_THROW(a.div(-2),TimeIsNegativeOrZeroException);
     ASSERT_THROW(a.div(0),TimeIsNegativeOrZeroException);
+}
+TEST(多种货币,无汇率时判等){
+    Money * a=new CNY(10);
+    Money * b=new USD(10);
+    ASSERT_TRUE((*a)==(*b));
 }

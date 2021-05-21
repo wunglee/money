@@ -1,22 +1,14 @@
 #include "CNY.h"
 #include "Exceptions.h"
+#include "Money.h"
 
-CNY::CNY(const float amount) : amount(amount) {
-    if(amount<0){
-        throw AmountIsNegativeException();
-    }
-}
-
-bool CNY::operator==(const CNY &cny) const {
-    return this->amount==cny.amount;
-}
 
 CNY CNY::plus(CNY cny) {
-    return CNY(this->amount+cny.amount);
+    return CNY(getAmount() + cny.getAmount());
 }
 
 CNY CNY::sub(CNY cny) {
-    float a=this->amount-cny.amount;
+    float a= getAmount() - cny.getAmount();
     if(a<0){
         throw InsufficientAmountException();
     }
@@ -27,12 +19,15 @@ CNY CNY::muti(int times) {
     if(times<0){
         throw TimeIsNegativeException();
     }
-    return CNY(this->amount * times);
+    return CNY(getAmount() * times);
 }
 
 CNY CNY::div(int times) {
     if(times<=0){
         throw TimeIsNegativeOrZeroException();
     }
-    return CNY(this->amount / times);
+    return CNY(getAmount() / times);
+}
+
+CNY::CNY(const float amount):Money(amount) {
 }
