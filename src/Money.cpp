@@ -59,3 +59,7 @@ float Money::getRate(Type from, Type to) {
 void Money::addRate(Type from, Type to, float rate) {
     ratesMap[MoneyPair(from,to)]=rate;
 }
+
+void Money::clearRates() {
+    ratesMap.clear();
+}

@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 #include "../src/Exceptions.h"
 #include "../src/Money.h"
+#include "多种货币.h"
 
 /**
  * 任务列表：
@@ -61,28 +62,22 @@ TEST(单一货币,除法运算乘数为负数或零){
     ASSERT_THROW(a.div(-2),TimeIsNegativeOrZeroException);
     ASSERT_THROW(a.div(0),TimeIsNegativeOrZeroException);
 }
-TEST(多种货币,货币相同时判等){
+TEST_F(多种货币,货币相同时判等){
     Money a(CNY,10);
     Money b(CNY,10);
     ASSERT_EQ(a,b);
 }
-TEST(多种货币,货币不同时判等){
-    Money::addRate(USD,CNY,0.2);
-    Money::addRate(CNY,USD,5);
+TEST_F(多种货币,货币不同时判等){
     Money a(CNY,10);
     Money b(USD,2);
     ASSERT_EQ(a,b);
 }
-TEST(多种货币,货币不同时相加){
-    Money::addRate(USD,CNY,0.2);
-    Money::addRate(CNY,USD,5);
+TEST_F(多种货币,货币不同时相加){
     Money a(CNY,10);
     Money b(USD,2);
     ASSERT_EQ(a.plus(b),Money(CNY,20));
 }
-TEST(多种货币,货币不同时相减){
-    Money::addRate(USD,CNY,0.2);
-    Money::addRate(CNY,USD,5);
+TEST_F(多种货币,货币不同时相减){
     Money a(CNY,15);
     Money b(USD,2);
     ASSERT_EQ(a.sub(b),Money(CNY,5));

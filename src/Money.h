@@ -21,6 +21,7 @@ public:
     Money div(int times);
     static float getRate(Type from,Type to);
     static void addRate(Type from,Type to,float rate);
+    static void clearRates();
 };
 
 
