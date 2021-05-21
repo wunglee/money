@@ -5,7 +5,6 @@
 #ifndef MONEY_TDD_CNY_H
 #define MONEY_TDD_CNY_H
 
-
 class CNY {
 const float amount;
 public:

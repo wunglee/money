@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "../src/CNY.h"
+#include "../src/Exceptions.h"
 /**
  * 任务列表：
  * 创建CNY类型
@@ -24,7 +25,7 @@
      ASSERT_EQ(a,b);
  }
 TEST(单一货币,金额为负数异常){
-    ASSERT_THROW(CNY(-1),std::string);
+    ASSERT_THROW(CNY(-1),AmountIsNegativeException);
 }
 TEST(单一货币,加法运算){
     CNY a(10);
@@ -35,4 +36,9 @@ TEST(单一货币,减法运算){
     CNY a(10);
     CNY b(5);
     ASSERT_EQ(a.sub(b),CNY(5));
+}
+TEST(单一货币,减法运算被减数不足){
+    CNY a(5);
+    CNY b(10);
+    ASSERT_THROW(a.sub(b),InsufficientAmountException);
 }

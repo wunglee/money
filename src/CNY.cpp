@@ -1,8 +1,9 @@
 #include "CNY.h"
+#include "Exceptions.h"
 
 CNY::CNY(const float amount) : amount(amount) {
     if(amount<0){
-        throw "金额不可是负数";
+        throw AmountIsNegativeException();
     }
 }
 
@@ -15,5 +16,9 @@ CNY CNY::plus(CNY cny) {
 }
 
 CNY CNY::sub(CNY cny) {
-    return CNY(this->amount-cny.amount);
+    float a=this->amount-cny.amount;
+    if(a<0){
+        throw InsufficientAmountException();
+    }
+    return CNY(a);
 }
