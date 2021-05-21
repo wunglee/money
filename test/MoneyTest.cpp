@@ -78,7 +78,12 @@ TEST_F(多种货币,货币不同时相加){
     ASSERT_EQ(a.plus(b),Money(CNY,20));
 }
 TEST_F(多种货币,货币不同时相减){
-    Money a(CNY,15);
-    Money b(USD,2);
+    Money a(USD,2);
+    Money b(CNY,5);
     ASSERT_EQ(a.sub(b),Money(CNY,5));
+}
+TEST_F(多种货币,货币不同时相减金额不足异常){
+    Money a(USD,2);
+    Money b(CNY,15);
+    ASSERT_THROW(a.sub(b),InsufficientAmountException);
 }
