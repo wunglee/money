@@ -23,3 +23,6 @@
      CNY b(10);
      ASSERT_EQ(a,b);
  }
+TEST(单一货币,金额为负数异常){
+    ASSERT_THROW(CNY(-1),std::string);
+}
