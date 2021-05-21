@@ -21,6 +21,7 @@
  * 不同币种判等计算
  * 增加汇率设置方法
  * 剥离汇率计算到Rate类型
+ * 组合运算
  */
  TEST(单一货币,判等){
      Money a(CNY,10);
@@ -86,4 +87,9 @@ TEST_F(多种货币,货币不同时相减金额不足异常){
     Money a(USD,2);
     Money b(CNY,15);
     ASSERT_THROW(a.sub(b),InsufficientAmountException);
+}
+TEST_F(多种货币,混合运算){
+    Money a(USD,2);
+    Money b(CNY,15);
+    ASSERT_EQ(a.muti(2).sub(b).div(5),Money(CNY,1));
 }
