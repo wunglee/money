@@ -13,6 +13,8 @@ public:
     bool operator==(const CNY &cny) const;
 
     CNY plus(CNY cny);
+
+    CNY sub(CNY cny);
 };
 
 

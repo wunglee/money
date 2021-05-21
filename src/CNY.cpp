@@ -13,3 +13,7 @@ bool CNY::operator==(const CNY &cny) const {
 CNY CNY::plus(CNY cny) {
     return CNY(this->amount+cny.amount);
 }
+
+CNY CNY::sub(CNY cny) {
+    return CNY(this->amount-cny.amount);
+}

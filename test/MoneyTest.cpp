@@ -31,3 +31,8 @@ TEST(单一货币,加法运算){
     CNY b(10);
     ASSERT_EQ(a.plus(b),CNY(20));
 }
+TEST(单一货币,减法运算){
+    CNY a(10);
+    CNY b(5);
+    ASSERT_EQ(a.sub(b),CNY(5));
+}
