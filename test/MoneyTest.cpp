@@ -42,3 +42,7 @@ TEST(单一货币,减法运算被减数不足){
     CNY b(10);
     ASSERT_THROW(a.sub(b),InsufficientAmountException);
 }
+TEST(单一货币,乘法运算){
+    CNY a(5);
+    ASSERT_EQ(a.muti(2),CNY(10));
+}
