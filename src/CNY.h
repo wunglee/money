@@ -9,13 +9,6 @@ class CNY : public Money{
 public:
     CNY(const float amount);
 
-    Money plus(Money cny);
-
-    Money sub(Money cny);
-
-    Money muti(int times);
-
-    Money div(int times);
 };
 
 

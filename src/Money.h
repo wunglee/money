@@ -12,6 +12,14 @@ public:
     Money(const float amount);
     virtual float getAmount();
     virtual bool operator==(const Money& money) const;
+
+    Money plus(Money cny);
+
+    Money sub(Money cny);
+
+    Money muti(int times);
+
+    Money div(int times);
 };
 
 

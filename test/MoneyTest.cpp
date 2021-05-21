@@ -2,6 +2,7 @@
 #include "../src/CNY.h"
 #include "../src/Exceptions.h"
 #include "../src/USD.h"
+
 /**
  * 任务列表：
  * 创建CNY类型

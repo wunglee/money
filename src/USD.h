@@ -8,14 +8,6 @@
 class USD: public Money {
 public:
     USD(const float amount);
-
-    Money plus(Money usd);
-
-    Money sub(Money usd);
-
-    Money muti(int times);
-
-    Money div(int times);
 };
 
 
