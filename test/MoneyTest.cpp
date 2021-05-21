@@ -26,3 +26,8 @@
 TEST(单一货币,金额为负数异常){
     ASSERT_THROW(CNY(-1),std::string);
 }
+TEST(单一货币,加法运算){
+    CNY a(10);
+    CNY b(10);
+    ASSERT_EQ(a.plus(b),CNY(20));
+}

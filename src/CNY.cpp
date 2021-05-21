@@ -9,3 +9,7 @@ CNY::CNY(const float amount) : amount(amount) {
 bool CNY::operator==(const CNY &cny) const {
     return this->amount==cny.amount;
 }
+
+CNY CNY::plus(CNY cny) {
+    return CNY(this->amount+cny.amount);
+}

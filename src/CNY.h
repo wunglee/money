@@ -11,6 +11,8 @@ const float amount;
 public:
     CNY(const float amount);
     bool operator==(const CNY &cny) const;
+
+    CNY plus(CNY cny);
 };
 
 
