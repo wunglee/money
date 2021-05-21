@@ -15,8 +15,8 @@ public:
     float getAmount() const;
     const Type getType() const;
     bool operator==(const Money& money) const;
-    Money plus(Money cny);
-    Money sub(Money cny);
+    Money plus(Money& money);
+    Money sub(Money& money);
     Money muti(int times);
     Money div(int times);
     static float getRate(Type from,Type to);
