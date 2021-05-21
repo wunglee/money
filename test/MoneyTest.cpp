@@ -54,3 +54,8 @@ TEST(单一货币,乘法运算乘数为负数){
     CNY a(5);
     ASSERT_THROW(a.muti(-2),TimeIsNegativeException);
 }
+TEST(单一货币,除法运算乘数为负数或零){
+    CNY a(5);
+    ASSERT_THROW(a.div(-2),TimeIsNegativeOrZeroException);
+    ASSERT_THROW(a.div(0),TimeIsNegativeOrZeroException);
+}

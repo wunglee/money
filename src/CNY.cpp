@@ -31,5 +31,8 @@ CNY CNY::muti(int times) {
 }
 
 CNY CNY::div(int times) {
+    if(times<=0){
+        throw TimeIsNegativeOrZeroException();
+    }
     return CNY(this->amount / times);
 }
