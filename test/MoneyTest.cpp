@@ -15,9 +15,10 @@
  * 除法运算
  * 除数小于等于0
  * 增加USD类型
- * 增加汇率转换方法
- * 增加汇率设置方法
  * 提取Money类型
+ * 增加汇率转换方法
+ * 不同币种判等计算
+ * 增加汇率设置方法
  * 剥离汇率计算到Rate类型
  */
  TEST(单一货币,判等){
@@ -69,4 +70,14 @@ TEST(多种货币,货币不同时判等){
     Money a(CNY,10);
     Money b(USD,2);
     ASSERT_EQ(a,b);
+}
+TEST(多种货币,货币不同时相加){
+    Money a(CNY,10);
+    Money b(USD,2);
+    ASSERT_EQ(a.plus(b),Money(CNY,20));
+}
+TEST(多种货币,货币不同时相减){
+    Money a(CNY,15);
+    Money b(USD,2);
+    ASSERT_EQ(a.sub(b),Money(CNY,5));
 }
