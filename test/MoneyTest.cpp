@@ -18,3 +18,8 @@
  * 提取Money类型
  * 剥离汇率计算到Rate类型
  */
+ TEST(单一货币,判等){
+     CNY a(10);
+     CNY b(10);
+     ASSERT_EQ(a,b);
+ }
