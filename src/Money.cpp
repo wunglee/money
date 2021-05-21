@@ -2,7 +2,8 @@
 #include "Money.h"
 
 bool Money::operator==(const Money& money) const {
-    return this->amount_==money.amount_;
+    float rate=getRate(this->getType(),money.getType());
+    return this->amount_==money.amount_*rate;
 }
 
 Money::Money(Type type, const float amount):type_(type),amount_(amount) {
@@ -11,19 +12,19 @@ Money::Money(Type type, const float amount):type_(type),amount_(amount) {
     }
 }
 
-float Money::getAmount() {
+float Money::getAmount() const{
     return this->amount_;
 }
-const Type Money::getType() {
+const Type Money::getType() const{
     return this->type_;
 }
 
 Money Money::plus(Money money) {
-    return Money(this->getType(),getAmount() + money.getAmount());
+    return Money(this->getType(),getAmount() + money.getAmount()*getRate(this->getType(),money.getType()));
 }
 
 Money Money::sub(Money money) {
-    float a= getAmount() - money.getAmount();
+    float a= getAmount() - money.getAmount()*getRate(this->getType(),money.getType());
     if(a<0){
         throw InsufficientAmountException();
     }
@@ -42,4 +43,10 @@ Money Money::div(int times) {
         throw TimeIsNegativeOrZeroException();
     }
     return Money(this->getType(),getAmount() / times);
+}
+float Money::getRate(Type from, Type to) {
+    if(from==to){
+        return 1;
+    }
+    return 0;
 }

@@ -60,8 +60,8 @@ TEST(单一货币,除法运算乘数为负数或零){
     ASSERT_THROW(a.div(-2),TimeIsNegativeOrZeroException);
     ASSERT_THROW(a.div(0),TimeIsNegativeOrZeroException);
 }
-TEST(多种货币,无汇率时判等){
-    Money * a=new Money(CNY,10);
-    Money * b=new Money(USD,10);
-    ASSERT_TRUE((*a)==(*b));
+TEST(多种货币,货币相同时判等){
+    Money a(CNY,10);
+    Money b(CNY,10);
+    ASSERT_TRUE(a==b);
 }

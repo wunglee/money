@@ -1,7 +1,3 @@
-//
-// Created by 王立 on 2021/5/21.
-//
-
 #ifndef MONEY_TDD_MONEY_H
 #define MONEY_TDD_MONEY_H
 enum Type{CNY,USD};
@@ -11,13 +7,14 @@ private:
     const Type type_;
 public:
     Money(const Type type,const float amount);
-    float getAmount();
-    const Type getType();
+    float getAmount() const;
+    const Type getType() const;
     bool operator==(const Money& money) const;
     Money plus(Money cny);
     Money sub(Money cny);
     Money muti(int times);
     Money div(int times);
+    static float getRate(Type from,Type to);
 };
 
 
