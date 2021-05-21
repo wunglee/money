@@ -48,5 +48,11 @@ float Money::getRate(Type from, Type to) {
     if(from==to){
         return 1;
     }
+    if(USD==from&&CNY==to){
+        return 0.2;
+    }
+    if(CNY==from&&USD==to){
+        return 5;
+    }
     return 0;
 }

@@ -63,5 +63,10 @@ TEST(单一货币,除法运算乘数为负数或零){
 TEST(多种货币,货币相同时判等){
     Money a(CNY,10);
     Money b(CNY,10);
-    ASSERT_TRUE(a==b);
+    ASSERT_EQ(a,b);
+}
+TEST(多种货币,货币不同时判等){
+    Money a(CNY,10);
+    Money b(USD,2);
+    ASSERT_EQ(a,b);
 }
