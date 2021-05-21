@@ -1,8 +1,3 @@
-//
-// Created by 王立 on 2021/5/21.
-//
-
-#include "CNY.h"
 #include "Exceptions.h"
 #include "Money.h"
 
@@ -10,7 +5,7 @@ bool Money::operator==(const Money& money) const {
     return this->amount_==money.amount_;
 }
 
-Money::Money(const float amount) : amount_(amount) {
+Money::Money(Type type, const float amount):type_(type),amount_(amount) {
     if(amount<0){
         throw AmountIsNegativeException();
     }
@@ -19,29 +14,32 @@ Money::Money(const float amount) : amount_(amount) {
 float Money::getAmount() {
     return this->amount_;
 }
-
-Money Money::plus(Money cny) {
-    return Money(getAmount() + cny.getAmount());
+const Type Money::getType() {
+    return this->type_;
 }
 
-Money Money::sub(Money cny) {
-    float a= getAmount() - cny.getAmount();
+Money Money::plus(Money money) {
+    return Money(this->getType(),getAmount() + money.getAmount());
+}
+
+Money Money::sub(Money money) {
+    float a= getAmount() - money.getAmount();
     if(a<0){
         throw InsufficientAmountException();
     }
-    return Money(a);
+    return Money(this->getType(),a);
 }
 
 Money Money::muti(int times) {
     if(times<0){
         throw TimeIsNegativeException();
     }
-    return Money(getAmount() * times);
+    return Money(this->getType(),getAmount() * times);
 }
 
 Money Money::div(int times) {
     if(times<=0){
         throw TimeIsNegativeOrZeroException();
     }
-    return Money(getAmount() / times);
+    return Money(this->getType(),getAmount() / times);
 }

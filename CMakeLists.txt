@@ -27,10 +27,8 @@ link_directories(/usr/local/lib)
 add_subdirectory(${CMAKE_CURRENT_BINARY_DIR}/googletest-src
         ${CMAKE_CURRENT_BINARY_DIR}/googletest-build
         EXCLUDE_FROM_ALL)
-add_library(cny src/CNY.cpp)
 add_library(money src/Money.cpp)
-add_library(usd src/USD.cpp)
 add_executable(moneyTest test/MoneyTest.cpp)
-target_link_libraries(moneyTest gtest_main cny money usd)
+target_link_libraries(moneyTest gtest_main money)
 enable_testing()
 add_test(NAME moneyTest COMMAND moneyTest)

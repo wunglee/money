@@ -1,7 +1,6 @@
 #include "gtest/gtest.h"
-#include "../src/CNY.h"
 #include "../src/Exceptions.h"
-#include "../src/USD.h"
+#include "../src/Money.h"
 
 /**
  * 任务列表：
@@ -22,47 +21,47 @@
  * 剥离汇率计算到Rate类型
  */
  TEST(单一货币,判等){
-     CNY a(10);
-     CNY b(10);
+     Money a(CNY,10);
+     Money b(CNY,10);
      ASSERT_EQ(a,b);
  }
 TEST(单一货币,金额为负数异常){
-    ASSERT_THROW(CNY(-1),AmountIsNegativeException);
+    ASSERT_THROW(Money(CNY,-1),AmountIsNegativeException);
 }
 TEST(单一货币,加法运算){
-    CNY a(10);
-    CNY b(10);
-    ASSERT_EQ(a.plus(b),CNY(20));
+    Money a(CNY,10);
+    Money b(CNY,10);
+    ASSERT_EQ(a.plus(b),Money(CNY,20));
 }
 TEST(单一货币,减法运算){
-    CNY a(10);
-    CNY b(5);
-    ASSERT_EQ(a.sub(b),CNY(5));
+    Money a(CNY,10);
+    Money b(CNY,5);
+    ASSERT_EQ(a.sub(b),Money(CNY,5));
 }
 TEST(单一货币,减法运算被减数不足){
-    CNY a(5);
-    CNY b(10);
+    Money a(CNY,5);
+    Money b(CNY,10);
     ASSERT_THROW(a.sub(b),InsufficientAmountException);
 }
 TEST(单一货币,乘法运算){
-    CNY a(5);
-    ASSERT_EQ(a.muti(2),CNY(10));
+    Money a(CNY,5);
+    ASSERT_EQ(a.muti(2),Money(CNY,10));
 }
 TEST(单一货币,除法运算){
-    CNY a(10);
-    ASSERT_EQ(a.div(2),CNY(5));
+    Money a(CNY,10);
+    ASSERT_EQ(a.div(2),Money(CNY,5));
 }
 TEST(单一货币,乘法运算乘数为负数){
-    CNY a(5);
+    Money a(CNY,5);
     ASSERT_THROW(a.muti(-2),TimeIsNegativeException);
 }
 TEST(单一货币,除法运算乘数为负数或零){
-    CNY a(5);
+    Money a(CNY,5);
     ASSERT_THROW(a.div(-2),TimeIsNegativeOrZeroException);
     ASSERT_THROW(a.div(0),TimeIsNegativeOrZeroException);
 }
 TEST(多种货币,无汇率时判等){
-    Money * a=new CNY(10);
-    Money * b=new USD(10);
+    Money * a=new Money(CNY,10);
+    Money * b=new Money(USD,10);
     ASSERT_TRUE((*a)==(*b));
 }
