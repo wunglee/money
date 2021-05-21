@@ -15,10 +15,10 @@ public:
     float getAmount() const;
     const Type getType() const;
     bool operator==(const Money& money) const;
-    Money plus(Money& money);
-    Money sub(Money& money);
-    Money muti(int times);
-    Money div(int times);
+    Money operator+(Money& money);
+    Money operator-(Money& money);
+    Money operator*(int times);
+    Money operator/(int times);
     static float getRate(Type from,Type to);
     static void addRate(Type from,Type to,float rate);
     static void clearRates();
