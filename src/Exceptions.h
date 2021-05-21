@@ -14,6 +14,8 @@ class TimeIsNegativeException {
 };
 class TimeIsNegativeOrZeroException {
 };
+class RateNotFoundException {
+};
 
 
 #endif //MONEY_TDD_EXCEPTIONS_H

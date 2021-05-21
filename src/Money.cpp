@@ -44,15 +44,18 @@ Money Money::div(int times) {
     }
     return Money(this->getType(),getAmount() / times);
 }
+RatesMap Money::ratesMap;
 float Money::getRate(Type from, Type to) {
     if(from==to){
         return 1;
     }
-    if(USD==from&&CNY==to){
-        return 0.2;
+    float rate=ratesMap[MoneyPair(from,to)];
+    if(rate==0){
+        throw RateNotFoundException();
     }
-    if(CNY==from&&USD==to){
-        return 5;
-    }
-    return 0;
+    return rate;
+}
+
+void Money::addRate(Type from, Type to, float rate) {
+    ratesMap[MoneyPair(from,to)]=rate;
 }

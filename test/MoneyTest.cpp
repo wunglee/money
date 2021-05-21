@@ -67,16 +67,22 @@ TEST(多种货币,货币相同时判等){
     ASSERT_EQ(a,b);
 }
 TEST(多种货币,货币不同时判等){
+    Money::addRate(USD,CNY,0.2);
+    Money::addRate(CNY,USD,5);
     Money a(CNY,10);
     Money b(USD,2);
     ASSERT_EQ(a,b);
 }
 TEST(多种货币,货币不同时相加){
+    Money::addRate(USD,CNY,0.2);
+    Money::addRate(CNY,USD,5);
     Money a(CNY,10);
     Money b(USD,2);
     ASSERT_EQ(a.plus(b),Money(CNY,20));
 }
 TEST(多种货币,货币不同时相减){
+    Money::addRate(USD,CNY,0.2);
+    Money::addRate(CNY,USD,5);
     Money a(CNY,15);
     Money b(USD,2);
     ASSERT_EQ(a.sub(b),Money(CNY,5));
