@@ -26,3 +26,7 @@ CNY CNY::sub(CNY cny) {
 CNY CNY::muti(int times) {
     return CNY(this->amount * times);
 }
+
+CNY CNY::div(int times) {
+    return CNY(this->amount / times);
+}

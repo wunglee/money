@@ -16,6 +16,8 @@ public:
     CNY sub(CNY cny);
 
     CNY muti(int times);
+
+    CNY div(int times);
 };
 
 

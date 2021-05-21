@@ -46,3 +46,7 @@ TEST(单一货币,乘法运算){
     CNY a(5);
     ASSERT_EQ(a.muti(2),CNY(10));
 }
+TEST(单一货币,除法运算){
+    CNY a(10);
+    ASSERT_EQ(a.div(2),CNY(5));
+}
