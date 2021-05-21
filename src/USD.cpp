@@ -2,30 +2,30 @@
 #include "Exceptions.h"
 
 
-USD USD::plus(USD usd) {
-    return USD(getAmount()+usd.getAmount());
+Money USD::plus(Money usd) {
+    return Money(getAmount()+usd.getAmount());
 }
 
-USD USD::sub(USD usd) {
+Money USD::sub(Money usd) {
     float a= getAmount()-usd.getAmount();
     if(a<0){
         throw InsufficientAmountException();
     }
-    return USD(a);
+    return Money(a);
 }
 
-USD USD::muti(int times) {
+Money USD::muti(int times) {
     if(times<0){
         throw TimeIsNegativeException();
     }
-    return USD(getAmount() * times);
+    return Money(getAmount() * times);
 }
 
-USD USD::div(int times) {
+Money USD::div(int times) {
     if(times<=0){
         throw TimeIsNegativeOrZeroException();
     }
-    return USD(getAmount() / times);
+    return Money(getAmount() / times);
 }
 
 USD::USD(const float amount):Money(amount) {
