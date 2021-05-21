@@ -50,3 +50,7 @@ TEST(单一货币,除法运算){
     CNY a(10);
     ASSERT_EQ(a.div(2),CNY(5));
 }
+TEST(单一货币,乘法运算乘数为负数){
+    CNY a(5);
+    ASSERT_THROW(a.muti(-2),TimeIsNegativeException);
+}

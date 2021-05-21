@@ -10,6 +10,8 @@ class AmountIsNegativeException {
 };
 class InsufficientAmountException {
 };
+class TimeIsNegativeException {
+};
 
 
 #endif //MONEY_TDD_EXCEPTIONS_H

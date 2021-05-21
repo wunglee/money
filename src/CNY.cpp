@@ -24,6 +24,9 @@ CNY CNY::sub(CNY cny) {
 }
 
 CNY CNY::muti(int times) {
+    if(times<0){
+        throw TimeIsNegativeException();
+    }
     return CNY(this->amount * times);
 }
 
